@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eva Grupo Médico - Dr. Hernán Volveras - Cirugía Plástica en Cali</title>
+    
+    <!-- Metadatos principales -->
+    <meta name="description" content="Dr. Hernán Volveras, experto en cirugía plástica en Cali, Colombia. Con más de 35 años de experiencia.">
+    <meta name="keywords" content="cirugía plástica, Cali, Colombia, Dr. Hernán Volveras, Eva Grupo Médico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://evagrupomedicospa.com/">
+    <meta property="og:title" content="Eva Grupo Médico - Dr. Hernán Volveras">
+    <meta property="og:description" content="Dr. Hernán Volveras, experto en cirugía plástica en Cali, Colombia. Con más de 35 años de experiencia.">
+    <meta property="og:image" content="Imagenes/1.png">
 
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://evagrupomedicospa.com/">
+    <meta property="twitter:title" content="Eva Grupo Médico - Dr. Hernán Volveras">
+    <meta property="twitter:description" content="Dr. Hernán Volveras, experto en cirugía plástica en Cali, Colombia. Con más de 35 años de experiencia.">
+    <meta property="twitter:image" content="Imagenes/1.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            text-align: center;
+            animation: fadeInScale 2s ease-in-out;
+        }
+
+        .logo {
+            max-width: 400px;
+            width: 80vw;
+            height: auto;
+            opacity: 0;
+            animation: logoAnimation 2.5s ease-in-out forwards;
+        }
+
+        @keyframes logoAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animación de salida */
+        .fade-out {
+            animation: fadeOut 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container" id="logoContainer">
+        <img src="Imagenes/1.png" alt="Eva Grupo Médico" class="logo">
+    </div>
+
+    <script>
+        // Redireccionar a home.html después de 3 segundos
+        setTimeout(() => {
+            // Agregar animación de salida
+            document.getElementById('logoContainer').classList.add('fade-out');
+            
+            // Esperar que termine la animación de salida antes de redireccionar
+            setTimeout(() => {
+                window.location.href = 'Secciones/Home.html';
+            }, 800);
+        }, 3000);
+    </script>
+</body>
+</html>
