@@ -86,6 +86,16 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                
+                // Si es la sección social, inicializar las animaciones de los iconos
+                if (entry.target.classList.contains('social-section')) {
+                    const socialIcons = entry.target.querySelectorAll('.social-icon');
+                    socialIcons.forEach((icon, index) => {
+                        setTimeout(() => {
+                            icon.classList.add('visible');
+                        }, index * 200); // Más delay para los iconos sociales
+                    });
+                }
             }
         });
     }, {

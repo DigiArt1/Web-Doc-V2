@@ -300,3 +300,116 @@ body {
         font-size: 0.8rem;
     }
 }
+
+/* Sección de Redes Sociales */
+.social-section {
+    padding: 60px 50px;
+    background-color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.social-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-container h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Animaciones para iconos sociales */
+.social-icon.youtube { transition-delay: 0.1s; }
+.social-icon.facebook { transition-delay: 0.2s; }
+.social-icon.instagram { transition-delay: 0.3s; }
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e91e63;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.social-icon.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    background-color: #c2185b;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Responsive para redes sociales */
+@media (max-width: 768px) {
+    .social-section {
+        padding: 50px 30px;
+    }
+
+    .social-container h2 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-section {
+        padding: 40px 20px;
+    }
+
+    .social-container h2 {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
