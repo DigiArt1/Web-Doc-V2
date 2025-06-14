@@ -1,0 +1,351 @@
+/* Estilos Cirugía */
+body {
+    padding-top: 120px;
+    background-color: #f8f9fa;
+}
+
+.cirugia-section {
+    padding: 80px 50px;
+    background-color: white;
+    margin: 50px 0;
+}
+
+.cirugia-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cirugia-header {
+    margin-bottom: 50px;
+}
+
+.cirugia-header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.cirugia-header h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #e91e63;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.cirugia-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cirugia-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    max-height: 400px;
+}
+
+.cirugia-item:hover {
+    transform: translateY(-5px);
+}
+
+.cirugia-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.cirugia-image {
+    flex: 1;
+    width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cirugia-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.cirugia-item:hover .cirugia-image img {
+    transform: scale(1.05);
+}
+
+.cirugia-content {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+}
+
+.cirugia-content h3 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.cirugia-content p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.contactar-btn {
+    display: inline-block;
+    background-color: #e91e63;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.contactar-btn:hover {
+    background-color: #ff5890e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .cirugia-section {
+        padding: 60px 30px;
+        margin: 30px 0;
+    }
+
+    .cirugia-header h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .cirugia-header h2 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .cirugia-item {
+        flex-direction: column !important;
+        max-height: none;
+    }
+    
+    .cirugia-image {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .cirugia-content {
+        padding: 30px;
+    }
+
+    .cirugia-content h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .cirugia-content p {
+        text-align: center;
+    }
+
+    .contactar-btn {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .cirugia-section {
+        padding: 40px 20px;
+        margin: 20px 0;
+    }
+
+    .cirugia-header h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .cirugia-header h2 {
+        font-size: 0.9rem;
+    }
+
+    .cirugia-image {
+        height: 250px;
+    }
+
+    .cirugia-content {
+        padding: 20px;
+    }
+
+    .cirugia-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .cirugia-content p {
+        font-size: 0.9rem;
+    }
+
+    .contactar-btn {
+        padding: 10px 25px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animaciones */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animaciones para los iconos sociales */
+.social-icon {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: opacity, transform;
+}
+
+.social-icon.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sección de Redes Sociales */
+.social-section {
+    padding: 60px 50px;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.social-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-container h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e91e63;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    background-color: #c2185b;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Responsive para redes sociales */
+@media (max-width: 768px) {
+    .social-section {
+        padding: 50px 30px;
+    }
+
+    .social-container h2 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-section {
+        padding: 40px 20px;
+    }
+
+    .social-container h2 {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
