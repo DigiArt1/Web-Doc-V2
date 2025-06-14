@@ -1,2 +1,307 @@
 /* Estilos Nosotros */
+body {
+    padding-top: 120px;
+    background-color: #f8f9fa;
+}
+
+/* Sección NOSOTROS */
+.nosotros-section {
+    padding: 80px 50px;
+    background-color: white;
+    margin: 50px 0;
+}
+
+.nosotros-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nosotros-header {
+    margin-bottom: 50px;
+}
+
+.nosotros-header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.nosotros-header h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #e91e63;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.nosotros-content {
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.nosotros-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Grid de Servicios */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.servicio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.servicio-item:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.servicio-icon {
+    width: 400px;
+    height: 400px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.servicio-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.servicio-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Sección de Redes Sociales */
+.social-section {
+    padding: 60px 50px;
+    background-color: white;
+    text-align: center;
+}
+
+.social-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-container h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e91e63;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    background-color: #c2185b;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .nosotros-section {
+        padding: 60px 30px;
+        margin: 30px 0;
+    }
+
+    .nosotros-header h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .nosotros-header h2 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .nosotros-content {
+        text-align: left;
+    }
+
+    .servicios-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 30px 0;
+        max-width: 700px;
+    }
+
+    .servicio-icon {
+        width: 350px;
+        height: 350px;
+        margin-bottom: 10px;
+    }
+
+    .servicio-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .social-section {
+        padding: 50px 30px;
+    }
+
+    .social-container h2 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nosotros-section {
+        padding: 40px 20px;
+        margin: 20px 0;
+    }
+
+    .nosotros-header h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .nosotros-header h2 {
+        font-size: 0.9rem;
+    }
+
+    .nosotros-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .servicios-grid {
+        gap: 10px;
+        padding: 20px 0;
+        max-width: 600px;
+    }
+
+    .servicio-icon {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+
+    .servicio-item h3 {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    .social-section {
+        padding: 40px 20px;
+    }
+
+    .social-container h2 {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Animaciones de entrada */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-card:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-card:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-card:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-card:nth-child(4) { transition-delay: 0.4s; }
 
