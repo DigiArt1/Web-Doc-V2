@@ -81,10 +81,28 @@ body {
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .procedimiento-image:hover {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.procedimiento-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.procedimiento-image:hover::before {
+    opacity: 1;
 }
 
 .procedimiento-image img {
@@ -92,6 +110,27 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.procedimiento-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    width: 90%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.procedimiento-image:hover .procedimiento-overlay {
+    opacity: 1;
 }
 
 .procedimiento-item h3 {
@@ -174,6 +213,10 @@ body {
         font-size: 1.2rem;
         max-width: 400px;
     }
+
+    .procedimiento-overlay {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -235,6 +278,10 @@ body {
         width: 20px;
         height: 20px;
     }
+
+    .procedimiento-overlay {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -287,6 +334,10 @@ body {
     .social-icon svg {
         width: 20px;
         height: 20px;
+    }
+
+    .procedimiento-overlay {
+        font-size: 1rem;
     }
 }
 
