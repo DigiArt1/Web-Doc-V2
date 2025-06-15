@@ -143,7 +143,11 @@ class Carousel {
 const carousel = new Carousel();
 
 // Ejemplo de cómo agregar slides (puedes usar estas funciones):
-carousel.addSlide('image', '../Imagenes/1.png');
+carousel.addSlide('video', '../Imagenes/1videocarrusel.mp4');
+carousel.addSlide('image', '../Imagenes/Carrusel2.png');
+carousel.addSlide('image', '../Imagenes/Carrusel3.png');
+carousel.addSlide('image', '../Imagenes/Carrusel4.png');
+carousel.addSlide('image', '../Imagenes/2.png');
 carousel.addSlide('image', '../Imagenes/2.png');
 // carousel.addSlide('video', '../Videos/video1.mp4', '<h2>Video Título</h2>');
 
