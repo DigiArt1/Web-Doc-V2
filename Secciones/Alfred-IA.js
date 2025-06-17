@@ -95,9 +95,32 @@
                 }
 
                 @keyframes alfred-pulse {
-                    0% { box-shadow: 0 4px 20px ${theme.shadow}; }
-                    50% { box-shadow: 0 4px 20px ${theme.shadowHover}; }
-                    100% { box-shadow: 0 4px 20px ${theme.shadow}; }
+                    0% { 
+                        box-shadow: 0 4px 20px ${theme.shadow};
+                        transform: scale(1);
+                    }
+                    50% { 
+                        box-shadow: 0 4px 20px ${theme.shadowHover}, 0 0 30px ${theme.primaryLight}40;
+                        transform: scale(1.05);
+                    }
+                    100% { 
+                        box-shadow: 0 4px 20px ${theme.shadow};
+                        transform: scale(1);
+                    }
+                }
+
+                /* Efecto de resplandor adicional */
+                .alfred-chat-button.alfred-glow {
+                    animation: alfred-glow 2s ease-in-out infinite alternate;
+                }
+
+                @keyframes alfred-glow {
+                    from {
+                        box-shadow: 0 4px 20px ${theme.shadow}, 0 0 20px ${theme.primaryLight}60;
+                    }
+                    to {
+                        box-shadow: 0 6px 25px ${theme.shadowHover}, 0 0 40px ${theme.primaryLight}80, 0 0 60px ${theme.primaryLight}40;
+                    }
                 }
 
                 .alfred-chat-window {
@@ -422,14 +445,14 @@
                     }
                     
                     .alfred-chat-window {
-                        bottom: 0;
-                        right: 0;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        border-radius: 0;
-                        max-height: 100vh;
+                        bottom: 85px;
+                        right: 15px;
+                        left: 15px;
+                        top: auto;
+                        width: auto;
+                        height: 70vh;
+                        max-height: 500px;
+                        border-radius: 15px;
                     }
                 }
 
@@ -439,8 +462,24 @@
                         height: 50px;
                     }
                     
+                    .alfred-chat-window {
+                        bottom: 80px;
+                        right: 10px;
+                        left: 10px;
+                        height: 65vh;
+                        max-height: 450px;
+                    }
+                    
                     .alfred-message {
                         max-width: 90%;
+                    }
+                }
+
+                /* Para pantallas muy pequeñas */
+                @media (max-width: 360px) {
+                    .alfred-chat-window {
+                        height: 60vh;
+                        max-height: 400px;
                     }
                 }
 
@@ -465,6 +504,87 @@
                         transform: translateX(100%);
                     }
                 }
+
+                /* Mensaje desplegable de llamada a la acción */
+                .alfred-cta-message {
+                    position: fixed;
+                    ${position.ctaMessage || 'bottom: 100px; right: 100px;'}
+                    background: white;
+                    color: #333;
+                    padding: 12px 16px;
+                    border-radius: 20px;
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                    font-size: 14px;
+                    font-weight: 500;
+                    max-width: 250px;
+                    opacity: 0;
+                    transform: translateY(10px) scale(0.9);
+                    transition: all 0.3s ease;
+                    z-index: 999998;
+                    border: 2px solid ${theme.primaryLight}20;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+
+                .alfred-cta-message.alfred-show {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                    animation: alfred-bounce 0.6s ease;
+                }
+
+                .alfred-cta-message::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -8px;
+                    right: 30px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid white;
+                }
+
+                @keyframes alfred-bounce {
+                    0% { transform: translateY(10px) scale(0.9); }
+                    60% { transform: translateY(-5px) scale(1.02); }
+                    100% { transform: translateY(0) scale(1); }
+                }
+
+                .alfred-cta-close {
+                    position: absolute;
+                    top: -5px;
+                    right: -5px;
+                    background: ${theme.primaryLight};
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 12px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.2s ease;
+                }
+
+                .alfred-cta-close:hover {
+                    background: ${theme.primaryLight};
+                    transform: scale(1.1);
+                }
+
+                /* Responsive para el mensaje CTA */
+                @media (max-width: 768px) {
+                    .alfred-cta-message {
+                        bottom: 85px;
+                        right: 20px;
+                        left: 20px;
+                        max-width: none;
+                    }
+                    
+                    .alfred-cta-message::after {
+                        right: 50px;
+                    }
+                }
             `;
         }
 
@@ -472,19 +592,23 @@
             const positions = {
                 'bottom-right': {
                     button: 'bottom: 30px; right: 30px;',
-                    window: 'bottom: 100px; right: 30px;'
+                    window: 'bottom: 100px; right: 30px;',
+                    ctaMessage: 'bottom: 100px; right: 100px;'
                 },
                 'bottom-left': {
                     button: 'bottom: 30px; left: 30px;',
-                    window: 'bottom: 100px; left: 30px;'
+                    window: 'bottom: 100px; left: 30px;',
+                    ctaMessage: 'bottom: 100px; left: 100px;'
                 },
                 'top-right': {
                     button: 'top: 30px; right: 30px;',
-                    window: 'top: 100px; right: 30px;'
+                    window: 'top: 100px; right: 30px;',
+                    ctaMessage: 'top: 100px; right: 100px;'
                 },
                 'top-left': {
                     button: 'top: 30px; left: 30px;',
-                    window: 'top: 100px; left: 30px;'
+                    window: 'top: 100px; left: 30px;',
+                    ctaMessage: 'top: 100px; left: 100px;'
                 }
             };
             return positions[this.config.position] || positions['bottom-right'];
@@ -546,9 +670,14 @@
 
         createWidget() {
             const widgetHTML = `
-                <button class="alfred-chat-button" id="alfred-chat-button-${Date.now()}">
+                <button class="alfred-chat-button alfred-glow" id="alfred-chat-button-${Date.now()}">
                     <i class="fas fa-robot"></i>
                 </button>
+                
+                <div class="alfred-cta-message" id="alfred-cta-message-${Date.now()}">
+                    <button class="alfred-cta-close">×</button>
+                    ¿Necesitas ayuda? ¡Habla con nuestro asistente Alfred!
+                </div>
                 
                 <div class="alfred-chat-window" id="alfred-chat-window-${Date.now()}">
                     <div class="alfred-chat-header">
@@ -604,12 +733,24 @@
             this.chatMessages = document.querySelector('.alfred-chat-messages');
             this.typingIndicator = document.querySelector('.alfred-typing-indicator');
             this.autoReadToggle = document.querySelector('.alfred-auto-read-toggle');
+            this.ctaMessage = document.querySelector('.alfred-cta-message');
+            this.ctaCloseButton = document.querySelector('.alfred-cta-close');
+            
+            // Mostrar mensaje CTA después de unos segundos
+            this.showCtaMessage();
         }
 
         attachEventListeners() {
             this.chatButton.addEventListener('click', () => this.toggleChat());
             this.closeButton.addEventListener('click', () => this.closeChat());
             this.sendButton.addEventListener('click', () => this.sendMessage());
+            
+            // Cerrar mensaje CTA
+            this.ctaCloseButton.addEventListener('click', () => this.hideCtaMessage());
+            this.ctaMessage.addEventListener('click', () => {
+                this.hideCtaMessage();
+                this.openChat();
+            });
             
             this.chatInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
@@ -643,6 +784,10 @@
             this.chatWindow.classList.add('alfred-show');
             this.chatButton.style.transform = 'scale(0.8)';
             
+            // Ocultar mensaje CTA y remover efecto de resplandor
+            this.hideCtaMessage();
+            this.chatButton.classList.remove('alfred-glow');
+            
             setTimeout(() => {
                 this.chatInput.focus();
             }, 300);
@@ -654,6 +799,11 @@
             this.isOpen = false;
             this.chatWindow.classList.remove('alfred-show');
             this.chatButton.style.transform = 'scale(1)';
+            
+            // Restaurar efecto de resplandor después de cerrar
+            setTimeout(() => {
+                this.chatButton.classList.add('alfred-glow');
+            }, 1000);
         }
 
         handleInputChange() {
@@ -897,8 +1047,17 @@
             cleanText = cleanText.replace(/&gt;/g, '>');
             cleanText = cleanText.replace(/&quot;/g, '"');
             
-            // Limpiar espacios múltiples
-            cleanText = cleanText.replace(/\s+/g, ' ').trim();
+            // Eliminar caracteres especiales y símbolos que no deben ser leídos
+            cleanText = cleanText
+                .replace(/[¡!¿?]/g, '') // Eliminar signos de exclamación e interrogación
+                .replace(/\*+/g, '') // Eliminar asteriscos
+                .replace(/_{2,}/g, '') // Eliminar guiones bajos múltiples
+                .replace(/\|/g, '') // Eliminar barras verticales
+                .replace(/[""]/g, '') // Eliminar comillas especiales
+                .replace(/['']/g, '') // Eliminar comillas simples especiales
+                .replace(/[()[\]{}]/g, '') // Eliminar paréntesis, corchetes y llaves
+                .replace(/\s+/g, ' ') // Limpiar espacios múltiples
+                .trim(); // Eliminar espacios al inicio y final
             
             return cleanText;
         }
@@ -951,6 +1110,28 @@
                     }
                 }, 300);
             }, 3000);
+        }
+
+        showCtaMessage() {
+            // Mostrar mensaje después de 3 segundos si el chat no está abierto
+            setTimeout(() => {
+                if (!this.isOpen && this.ctaMessage) {
+                    this.ctaMessage.classList.add('alfred-show');
+                    
+                    // Auto-ocultar después de 8 segundos
+                    setTimeout(() => {
+                        if (this.ctaMessage && this.ctaMessage.classList.contains('alfred-show')) {
+                            this.hideCtaMessage();
+                        }
+                    }, 8000);
+                }
+            }, 3000);
+        }
+
+        hideCtaMessage() {
+            if (this.ctaMessage) {
+                this.ctaMessage.classList.remove('alfred-show');
+            }
         }
     }
 
