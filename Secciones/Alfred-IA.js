@@ -676,7 +676,7 @@
                 
                 <div class="alfred-cta-message" id="alfred-cta-message-${Date.now()}">
                     <button class="alfred-cta-close">×</button>
-                    ¿Necesitas ayuda? ¡Habla con nuestro asistente Alfred!
+                    ¿Necesitas ayuda? ¡Habla con nuestra asistente Eva!
                 </div>
                 
                 <div class="alfred-chat-window" id="alfred-chat-window-${Date.now()}">
