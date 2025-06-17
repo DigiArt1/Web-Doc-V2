@@ -788,6 +788,11 @@
             this.hideCtaMessage();
             this.chatButton.classList.remove('alfred-glow');
             
+            // Detener el intervalo cuando se abre el chat
+            if (this.ctaInterval) {
+                clearInterval(this.ctaInterval);
+            }
+            
             setTimeout(() => {
                 this.chatInput.focus();
             }, 300);
@@ -804,6 +809,9 @@
             setTimeout(() => {
                 this.chatButton.classList.add('alfred-glow');
             }, 1000);
+            
+            // Reiniciar el intervalo cuando se cierra el chat
+            this.showCtaMessage();
         }
 
         handleInputChange() {
@@ -948,8 +956,14 @@
         destroy() {
             if (this.chatButton) this.chatButton.remove();
             if (this.chatWindow) this.chatWindow.remove();
+            if (this.ctaMessage) this.ctaMessage.remove();
             const styles = document.getElementById('alfred-chat-styles');
             if (styles) styles.remove();
+            
+            // Limpiar el intervalo al destruir el widget
+            if (this.ctaInterval) {
+                clearInterval(this.ctaInterval);
+            }
         }
 
         setApiKey(apiKey) {
@@ -1113,17 +1127,31 @@
         }
 
         showCtaMessage() {
-            // Mostrar mensaje después de 3 segundos si el chat no está abierto
-            setTimeout(() => {
-                if (!this.isOpen && this.ctaMessage) {
+            // Mostrar mensaje cada 10 segundos si el chat no está abierto
+            this.ctaInterval = setInterval(() => {
+                if (!this.isOpen && this.ctaMessage && !this.ctaMessage.classList.contains('alfred-show')) {
                     this.ctaMessage.classList.add('alfred-show');
                     
-                    // Auto-ocultar después de 8 segundos
+                    // Auto-ocultar después de 5 segundos
                     setTimeout(() => {
                         if (this.ctaMessage && this.ctaMessage.classList.contains('alfred-show')) {
                             this.hideCtaMessage();
                         }
-                    }, 8000);
+                    }, 5000);
+                }
+            }, 10000);
+            
+            // Mostrar el primer mensaje después de 3 segundos
+            setTimeout(() => {
+                if (!this.isOpen && this.ctaMessage) {
+                    this.ctaMessage.classList.add('alfred-show');
+                    
+                    // Auto-ocultar después de 5 segundos
+                    setTimeout(() => {
+                        if (this.ctaMessage && this.ctaMessage.classList.contains('alfred-show')) {
+                            this.hideCtaMessage();
+                        }
+                    }, 5000);
                 }
             }, 3000);
         }
